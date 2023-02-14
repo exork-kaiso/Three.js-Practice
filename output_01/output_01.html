@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+  <style>
+    body {
+      position: relative;
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+    }
+    canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-50% - 0px), calc(-50% - 0px));
+      box-sizing: border-box;
+      border: solid 1px white;
+      border-radius: 16px;
+    }
+    .page-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-50% - 0px), calc(-50% - 0px));
+
+      margin: 0;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 64px;
+      font-weight: 100;
+      color: white;
+      letter-spacing: 0.05em;
+
+    }
+  </style>
+  <script>
+    // ページの読み込みを待つ
+    window.addEventListener('DOMContentLoaded', init);
+
+    function init() {
+
+      // サイズを指定
+      const width = 960;
+      const height = 540;
+
+      // レンダラーを作成
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#myCanvas')
+      });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+
+      // シーンを作成
+      const scene = new THREE.Scene();
+
+      // カメラを作成
+      const camera = new THREE.PerspectiveCamera(45, width / height);
+      camera.position.set(0, 0, +1000);
+
+      // 箱を作成
+      const geometry = new THREE.BoxGeometry(400, 400, 400);
+      const material = new THREE.MeshNormalMaterial();
+      const box = new THREE.Mesh(geometry, material);
+      scene.add(box);
+
+      // 進行方向を判断する変数
+      let switch_x = false;
+      let switch_y = false;
+
+      tick();
+
+      // 毎フレーム時に実行されるループイベントです
+      function tick() {
+
+        // 回転
+        box.rotation.y += 0.01;
+        box.rotation.x += 0.01;
+        box.rotation.z += 0.01;
+
+        // canvas要素内で折り返す、X軸の平行移動です。
+        if( !switch_x ) {
+          box.position.x += 5;
+          if( !(box.position.x < (width/2 - 100)) ){
+            switch_x = true;
+          }
+        } else {
+          box.position.x -= 5;
+          if( box.position.x < -(width/2 - 100) ){
+            switch_x = false;
+          }
+        }
+
+        // canvas要素内で折り返す、Y軸の平行移動です。
+        if( !switch_y ) {
+          box.position.y += 5;
+          if( !(box.position.y < (height/2 - 200)) ){
+            switch_y = true;
+          }
+        } else {
+          box.position.y -= 5;
+          if( box.position.y < -(height/2 - 200) ){
+            switch_y = false;
+          }
+        }
+
+        renderer.render(scene, camera); // レンダリング
+
+        requestAnimationFrame(tick);
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+  <h1 class="page-title">Three.js Practice</h1>
+</body>
+</html>

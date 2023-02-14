@@ -65,6 +65,15 @@ practice_ics_01.html をベースにして遊んでみます。
 
 ## Practice ics 02
 
-ICS Media の Three.js のチュートリアルを学びました。
+オブジェクトにベタ塗りマテリアルを適用する。
+
+[Three.jsのマテリアルの基本](https://ics.media/tutorial-three/material_basic/ "")
+
+> 代表的なマテリアルとして「単色塗りのマテリアル」と「画像を使ったマテリアル」の二種類があります。
+
+THREE.MeshStandardMaterial()など標準的なマテリアルには、光源が必要。
+
+THREE.DirectionalLight() は平行光源だが、THREE.AmbientLight()は環境光として空間全体を照らすことができる。（他にもいろんな種類の光源がありそう。）
+
 
 [簡単なThree.jsのサンプルを試そう](https://ics.media/tutorial-three/quickstart/ "")

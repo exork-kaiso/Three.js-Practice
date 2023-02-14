@@ -75,5 +75,12 @@ THREE.MeshStandardMaterial()など標準的なマテリアルには、光源が�
 
 THREE.DirectionalLight() は平行光源だが、THREE.AmbientLight()は環境光として空間全体を照らすことができる。（他にもいろんな種類の光源がありそう。）
 
+## Practice ics 03
 
-[簡単なThree.jsのサンプルを試そう](https://ics.media/tutorial-three/quickstart/ "")
+オブジェクトにテクスチャファイルを使ったマテリアルを適用する。
+
+[Three.jsのマテリアルの基本](https://ics.media/tutorial-three/material_basic/ "")
+
+天体のテクスチャは以下のリンクが良さそう。
+
+[Planet Earch Texture Maps](http://planetpixelemporium.com/earth.html "")

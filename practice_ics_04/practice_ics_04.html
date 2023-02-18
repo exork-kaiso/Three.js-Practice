@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+  <script>
+    // ページの読み込みを待つ
+    window.addEventListener('DOMContentLoaded', init);
+
+    // サイズを指定
+    const width = 960;
+    const height = 960;
+
+    function init() {
+      // レンダラーを作成
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#myCanvas')
+      });
+      renderer.setSize(width, height);
+
+      // シーンを作成
+      const scene = new THREE.Scene();
+
+      // カメラを作成
+      const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+      camera.position.set(0, 0, +1000);
+
+      // 球体を作成
+      const sphereGeometry = new THREE.SphereGeometry(30, 30, 30);
+      const sphereMaterial = new THREE.MeshPhongMaterial({ color: 0x9AF995 });
+      const sphereMesh = new THREE.Mesh( sphereGeometry, sphereMaterial);
+
+      const boxGeometry = new THREE.BoxGeometry( 45, 45, 45 );
+      const boxMaterial = new THREE.MeshPhongMaterial({ color: 0xF6C0C0 } );
+      const boxMesh = new THREE.Mesh( boxGeometry, boxMaterial );
+
+      const coneGeometry = new THREE.ConeGeometry( 10, 40, 32 );
+      const coneMaterial = new THREE.MeshPhongMaterial( { color: 0x9AF995 } );
+      const coneMesh = new THREE.Mesh( coneGeometry, coneMaterial );
+
+      const cylinderGeometry = new THREE.CylinderGeometry( 20, 20, 80, 32 );
+      const cylinderMaterial = new THREE.MeshPhongMaterial( { color: 0xF6C0C0 } );
+      const cylinderMesh = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
+
+      const torusGeometry = new THREE.TorusGeometry( 20, 6, 16, 100 );
+      const torusMaterial = new THREE.MeshPhongMaterial( { color: 0x9AF995 } );
+      const torusMesh = new THREE.Mesh( torusGeometry, torusMaterial );
+
+      scene.add( sphereMesh );
+      scene.add( boxMesh );
+      scene.add( coneMesh );
+      scene.add( cylinderMesh );
+      scene.add( torusMesh );
+
+      sphereMesh.position.x = 100;
+      sphereMesh.position.y = 0;
+
+      boxMesh.position.x = 0;
+      boxMesh.position.y = 100;
+
+      coneMesh.position.x = -100;
+      coneMesh.position.y = 0;
+
+      cylinderMesh.position.x = 0;
+      cylinderMesh.position.y = -100;
+
+      torusMesh.position.x = 0;
+      torusMesh.position.y = 200;
+
+      let spherePivot = new THREE.Group();
+      let boxPivot = new THREE.Group();
+      let conePivot = new THREE.Group();
+      let cylinderPivot = new THREE.Group();
+      let torusPivot = new THREE.Group();
+
+      spherePivot.position.set( 0.0, 0.0, 0 );
+      boxPivot.position.set( 0.0, 0.0, 0 );
+      conePivot.position.set( 0.0, 0.0, 0 );
+      cylinderPivot.position.set( 0.0, 0.0, 0 );
+      torusPivot.position.set( 0.0, 0.0, 0 );
+
+      scene.add( spherePivot );
+      scene.add( boxPivot );
+      scene.add( conePivot );
+      scene.add( cylinderPivot );
+      scene.add( torusPivot );
+
+      spherePivot.add( sphereMesh );
+      boxPivot.add( boxMesh );
+      conePivot.add( coneMesh );
+      cylinderPivot.add( cylinderMesh );
+      torusPivot.add( torusMesh );
+
+      // 平行光源
+      const directionalLight = new THREE.DirectionalLight(0xFFFFFF);
+      directionalLight.position.set(1, 1, 1);
+      scene.add(directionalLight);
+
+      tick();
+
+      function tick() {
+        spherePivot.rotation.z += 0.01;
+        boxPivot.rotation.z += 0.01;
+        conePivot.rotation.z += 0.01;
+        cylinderPivot.rotation.z += 0.01;
+        torusPivot.rotation.z += 0.01;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+</body>
+</html>

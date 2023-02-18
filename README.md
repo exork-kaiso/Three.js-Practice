@@ -113,3 +113,31 @@ practice_ics_03.html をベースにして遊んでみました。
 - 指定した日付の惑星の位置を再現できるようにしたい。
 - それぞれ惑星の影を表現したい。
 - それぞれ天体の見え方を表現・演出したい。
+
+---
+
+## Practice ics 04
+
+いろんなジオメトリがあることを確認する。
+
+[Three.jsのジオメトリの基本](https://ics.media/tutorial-three/geometry_general/ "")
+
+- BoxGeometry
+- CapsuleGeometry
+- CircleGeometry
+- ConeGeometry
+- DodecahedronGeometry
+- EdgeGeometry
+- IcosahedronGeometry
+- LatheGeometry
+- OctahedronGeometry
+- PlaneGeometry
+- PolyhedronGeometry
+- RingGeometry
+- ShapeGeometry
+- SphereGeometry
+- TetrahedronGeometry
+- TorusGeometry
+- TorusKnotGeometry
+- TubeGeometry
+- WireGeometry

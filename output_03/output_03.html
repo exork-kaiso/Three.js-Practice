@@ -27,7 +27,7 @@
 
       // カメラを作成
       const camera = new THREE.PerspectiveCamera(45, width / height, 1, 100000);
-      camera.position.set(0, 0, +300);
+      camera.position.set(0, 0, +600);
 
       // 太陽
       // const sunDiameter = 1392038 * scaling * 0.1;
@@ -54,16 +54,38 @@
       const mercuryMesh = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
 
 
-      const mercuryLocusGeometry = new THREE.TorusGeometry( 25 * 1, 0.5, 16, 32 );
-      const venusLocusGeometry = new THREE.TorusGeometry( 25 * 2, 0.5, 16, 32 );
+      const mercuryLocusGeometry = new THREE.TorusGeometry( 25 * 1, 0.5, 16, 64 );
+      const venusLocusGeometry = new THREE.TorusGeometry( 25 * 2, 0.5, 16, 64 );
+      const earthLocusGeometry = new THREE.TorusGeometry( 25 * 3, 0.5, 16, 64 );
+      const marsLocusGeometry = new THREE.TorusGeometry( 25 * 4, 0.5, 16, 64 );
+      const jupiterLocusGeometry = new THREE.TorusGeometry( 25 * 5, 0.5, 16, 64 );
+      const saturnusLocusGeometry = new THREE.TorusGeometry( 25 * 6, 0.5, 16, 64 );
+      const uranusLocusGeometry = new THREE.TorusGeometry( 25 * 7, 0.5, 16, 64 );
+      const neptuneLocusGeometry = new THREE.TorusGeometry( 25 * 8, 0.5, 16, 64 );
+      const plutoLocusGeometry = new THREE.TorusGeometry( 25 * 9, 0.5, 16, 64 );
 
       const LocusMaterial = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 
       const mercuryLocusMesh = new THREE.Mesh( mercuryLocusGeometry, LocusMaterial );
       const venusLocusMesh = new THREE.Mesh( venusLocusGeometry, LocusMaterial );
+      const earthLocusMesh = new THREE.Mesh( earthLocusGeometry, LocusMaterial );
+      const marsLocusMesh = new THREE.Mesh( marsLocusGeometry, LocusMaterial );
+      const jupiterLocusMesh = new THREE.Mesh( jupiterLocusGeometry, LocusMaterial );
+      const saturnusLocusMesh = new THREE.Mesh( saturnusLocusGeometry, LocusMaterial );
+      const uranusLocusMesh = new THREE.Mesh( uranusLocusGeometry, LocusMaterial );
+      const neptuneLocusMesh = new THREE.Mesh( neptuneLocusGeometry, LocusMaterial );
+      const plutoLocusMesh = new THREE.Mesh( plutoLocusGeometry, LocusMaterial );
 
       scene.add( mercuryLocusMesh );
       scene.add( venusLocusMesh );
+      scene.add( earthLocusMesh );
+      scene.add( marsLocusMesh );
+      scene.add( jupiterLocusMesh );
+      scene.add( saturnusLocusMesh );
+      scene.add( uranusLocusMesh );
+      scene.add( neptuneLocusMesh );
+      scene.add( venusLocusMesh );
+      scene.add( plutoLocusMesh );
 
       // 金星
       // const venusDiameter = 12104 * scaling;
@@ -246,15 +268,24 @@
         // メッシュを回転させる
         // sunMesh.rotation.z += 0.01;
 
-        mercuryPivot.rotation.z += ( 0.01 / 0.241 );
-        venusPivot.rotation.z += ( 0.01 / 0.615 );
-        earthPivot.rotation.z += ( 0.01 / 1 );
-        marsPivot.rotation.z += ( 0.01 / 1.881 );
-        jupiterPivot.rotation.z += ( 0.01 / 11.862 );
-        saturnusPivot.rotation.z += ( 0.01 / 29.459 );
-        uranusPivot.rotation.z += ( 0.01 / 84.023 );
-        neptunePivot.rotation.z += ( 0.01 / 164.772 );
-        plutoPivot.rotation.z += ( 0.01 / 247.826 );
+        // mercuryPivot.rotation.z += ( 0.01 / 0.241 );
+        mercuryPivot.rotation.z += 0.08;
+        // venusPivot.rotation.z += ( 0.01 / 0.615 );
+        venusPivot.rotation.z += 0.04;
+        // earthPivot.rotation.z += ( 0.01 / 1 );
+        earthPivot.rotation.z += 0.02;
+        // marsPivot.rotation.z += ( 0.01 / 1.881 );
+        marsPivot.rotation.z += 0.01;
+        // jupiterPivot.rotation.z += ( 0.01 / 11.862 );
+        jupiterPivot.rotation.z += 0.005;
+        // saturnusPivot.rotation.z += ( 0.01 / 29.459 );
+        saturnusPivot.rotation.z += 0.0025;
+        // uranusPivot.rotation.z += ( 0.01 / 84.023 );
+        uranusPivot.rotation.z += 0.00125;
+        // neptunePivot.rotation.z += ( 0.01 / 164.772 );
+        neptunePivot.rotation.z += 0.000625;
+        // plutoPivot.rotation.z += ( 0.01 / 247.826 );
+        plutoPivot.rotation.z += 0.0003125;
 
         // レンダリング
         renderer.render(scene, camera);

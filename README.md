@@ -142,6 +142,7 @@ practice_ics_03.html をベースにして遊んでみました。
 - TubeGeometry
 - WireGeometry
 
+---
 ## Practice ics 05
 
 [Three.jsのカメラの制御](https://ics.media/tutorial-three/camera_position/ "")
@@ -177,3 +178,31 @@ practice_ics_03.html をベースにして遊んでみました。
 
 > `rot += (targetRot - rot) * 0.02;`
 
+---
+
+[Three.jsのOrbitControlsで手軽にカメラを制御する](https://ics.media/tutorial-three/camera_orbitcontrols/ "")
+
+> Three.jsにはカメラの動きを自動的に制御する THREE.OrbitControls クラスが存在します。
+
+（1）周回軌道を描くようにカメラを配置する場合、（2）ポインター操作でカメラの配置やアングルを変更する場合に役に立ちます。
+
+OrbitControl.js は Three.js 本体には含まれていないので、別で読み込む必要がある。
+
+OrbitControl.jsの読み込み
+`
+<script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+`
+
+> ※Three.js r148（2022年12月リリース）よりexamples/jsフォルダーでの提供はなくなりました。今後はES Modulesでの利用を推奨されますので、本記事もゆくゆく更新します。
+
+仕組みとしては、THREE.OrbitControlsクラスのコンストラクターへカメラのインスタンスとDOM要素を引数として指定するだけで、マウスと連動してインタラクションが効くようになる。
+
+`
+const controls = new THREE.OrbitControls( カメラのインスタンス , DOM要素 );
+`
+
+第2引数のDOM要素は、document.body もしくは canvas要素を渡すのが一般的。
+
+THREE.OrbitControlsインスタンスのenableDampingやdampingFactorプロパティーを設定すると心地良い操作感になります。
+
+THREE.OrbitControlsは手軽だがカスタマイズの自由度の制限がある。その場合はカメラの制御を自作するといい。

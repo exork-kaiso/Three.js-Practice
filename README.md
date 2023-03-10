@@ -206,3 +206,30 @@ const controls = new THREE.OrbitControls( カメラのインスタンス , DOM�
 THREE.OrbitControlsインスタンスのenableDampingやdampingFactorプロパティーを設定すると心地良い操作感になります。
 
 THREE.OrbitControlsは手軽だがカスタマイズの自由度の制限がある。その場合はカメラの制御を自作するといい。
+
+---
+
+[Three.jsでモデルデータを読み込む](https://ics.media/tutorial-three/model_basic/ "")
+
+Three.js では、様々な形式の3Dデータを取り込むことができる。
+
+> Three.jsではファイルを読み込むときにローダー（ファイルを解析する機能）を使ってモデルデータを読み込みます。
+
+Three.jsが対応しているモデルデータの形式
+
+- GLTF形式
+- OBJ形式
+- Collada(dae)形式
+- FBX形式（バイナリー）
+- 3DMax (.3ds)形式
+- Quake 2 MD2(.md2)形式
+- BlenderからThree.js Exporterを使って出力したJSON形式
+
+それぞれ形式ごとにローダーが用意されているので、読み込ませたいモデルデータの形式にあったローダーを使う。
+ローダーはThree.js には含まれていないので、別で読み込む必要がある。
+
+JavascriptでThree.jsを初期化したあと、ローダーを使ってファイルを読み込み、3D空間に追加する。
+
+※ ローダーをES Moduleで読み込むことが多そう。
+※ 読み込んだままのモデルデータはジャギって見えるので、アンチエイリアスがかけられると良さそう。
+
